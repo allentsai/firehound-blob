@@ -13,6 +13,7 @@ class UnmanagedDcmBlob implements BlobInterface
     const PUBLICATION_ID = 'publicationId';
     const GOOGLE_ADVERTISER_ID = 'googleAdvertiserId';
     const CREATIVE_ASSETS = 'creativeAssets';
+    const BATCH_ID = 'batchId';
 
     /**
      * @var int
@@ -23,6 +24,11 @@ class UnmanagedDcmBlob implements BlobInterface
      * @var int
      */
     private $advertiserId;
+
+    /**
+     * @var int
+     */
+    private $batchId;
 
     /**
      * @var DcmCreativeAsset[]
@@ -43,7 +49,8 @@ class UnmanagedDcmBlob implements BlobInterface
         return [
             self::PUBLICATION_ID => $this->publicationId,
             self::GOOGLE_ADVERTISER_ID => $this->advertiserId,
-            self::CREATIVE_ASSETS => $assets
+            self::CREATIVE_ASSETS => $assets,
+            self::BATCH_ID => $this->batchId
         ];
     }
 
@@ -52,6 +59,7 @@ class UnmanagedDcmBlob implements BlobInterface
         $this->publicationId = $this->safeGet($array, self::PUBLICATION_ID);
         $this->advertiserId = $this->safeGet($array, self::GOOGLE_ADVERTISER_ID);
         $assets = $this->safeGet($array, self::CREATIVE_ASSETS, []);
+        $this->batchId = $this->safeGet($array, self::BATCH_ID);
 
         $this->creativeAssets = [];
         foreach($assets as $assetArray) {
@@ -105,5 +113,22 @@ class UnmanagedDcmBlob implements BlobInterface
     public function getPublicationId()
     {
         return $this->publicationId;
+    }
+
+    /**
+     * @param $batchId
+     */
+    public function setBatchId($batchId)
+    {
+        $this->batchId = $batchId;
+    }
+
+    /**
+     * @param $batchId
+     * @return int
+     */
+    public function getBatchId($batchId)
+    {
+        return $this->batchId;
     }
 } 

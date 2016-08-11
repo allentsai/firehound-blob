@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "creativeAsset": {
+
+        }
+    },
+
+    "type": "object",
+    "properties": {
+        "publicationId": {
+            "type": "integer"
+        },
+        "googleAdvertiserId": {
+            "type": "integer"
+        },
+        "creativeAssets": {
+            "type": "array",
+            "items": {
+                "$ref":"#/definitions/creativeAsset"
+            }
+        },
+        "batchId": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "publicationId",
+        "googleAdvertiserId",
+        "creativeAssets",
+        "batchId"
+    ]
+}
