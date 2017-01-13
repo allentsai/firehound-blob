@@ -352,6 +352,16 @@ class UnmanagedFacebookBlob implements BlobInterface
         $this->igActorId = $igActorId;
     }
 
+    public function setCampaignObjective($campaignObjective)
+    {
+        $this->campaignObjective = $campaignObjective;
+    }
+
+    public function getCampaignObjective()
+    {
+        return $this->campaignObjective;
+    }
+
     /**
      * @return array
      */
